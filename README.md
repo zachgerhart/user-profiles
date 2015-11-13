@@ -44,14 +44,14 @@ module.exports = {
 ```
 Once your secret is created and required in your `server.js` file we can now run 
 ```javascript
-app.use(expressSession({ secret: config.sessionSecret }));
+app.use(session({ secret: config.sessionSecret }));
 ```
 This will allow express-session to run on all endpoints with our chosen secret being used to track cookies.
 
 ### Step 2: Controllers, endpoints, and data
 To keep our app's structure clean, let's create a new folder named `controllers` and add two files: `profileCtrl.js` and `userCtrl.js`. Require these controllers in your `server.js`, don't forget that you have to provide a file path when requiring your own files!
 
-We'll need some data inside our controllers to send back to our users.
+We'll need some data inside our controllers to check against and send to our users:
 ```javascript
 ///////////////
 //userCtrl.js//
@@ -59,19 +59,23 @@ We'll need some data inside our controllers to send back to our users.
 var users = [
 	{
 		name: 'Preston McNeil',
-		password: 'password1'
+		password: 'password1',
+		friends: ['Lindsey Mayer', 'Terry Ruff']
 	},
 	{
 		name: 'Ryan Rasmussen',
-		password: '$akgfl#'
+		password: '$akgfl#',
+		friends: ['Lindsey Mayer']
 	},
 	{
 		name: 'Terri Ruff',
-		password: 'hunter2'
+		password: 'hunter2',
+		friends: ['Lindsey Mayer', 'Preston McNeil']
 	},
 	{
 		name: 'Lindsey Mayer',
-		password: '777mittens777'
+		password: '777mittens777',
+		friends: ['Preston McNeil', 'Ryan Rasmussen', 'Terri Ruff']
 	}
 ];
 ```
@@ -79,7 +83,7 @@ var users = [
 //////////////////
 //profileCtrl.js//
 //////////////////
-var users = [
+var profiles = [
 	{
 		name: 'Preston McNeil',
 		pic: 'https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash2/1117694_1614542_108355616_q.jpg',
@@ -87,7 +91,7 @@ var users = [
 	},
 	{
 		name: 'Ryan Rasmussen',
-		pic: 'https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash4/211536_7938705_80713399_q.jpg'
+		pic: 'https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash4/211536_7938705_80713399_q.jpg',
 		status: 'RR Rules'
 	},
 	{
@@ -102,3 +106,27 @@ var users = [
 	}
 ];
 ```
+We'll start in `userCtrl.js`. 
+
+- Create a method on our exports object named `login`, this method should loop through the users array, find the user that matches `req.body.name` and confirm that the `req.body.password` matches the user's password.
+- If we find a match we need to set `req.session.currentUser` equal to to the correct user object and `res.send({ userFound: true });`.
+- If we don't find the user, we will need to `res.send({ userFound: false });`.
+- This function will need an endpoint, let's create a 'POST' endpoint on the path `'/api/login'` and have it call our newly created login method.
+
+Things to note:
+	
+- Because of our `app.use(cors(corsOptions));` we don't need to set headers inside of our login function. The CORS library is handling that for us on every request.
+- We have set a property on the `req.session` equal to our user. This lets us continue to track which user is currently active.
+
+___
+On to `profileCtrl.js`
+
+Here we will need a simple method on our exports object that pushes every profile that is in the `req.session.currentUser`'s `friends` array. Then `res.send`'s an object back containing our new array and the current user. The response object should be structured something like this:
+```javascript
+{
+	currentUser: req.session.currentUser,
+	friends: yourArrayOfFriendObjects
+}
+```
+
+This function will need an accompanying endpoint in your `server.js`, so add an `app.get` endpoint with a path of `'/api/profiles'.
