@@ -1,16 +1,18 @@
-{{ test }}
+<!--{{ test }}-->
 
 <div class="wrapper">
   <div>
-    <img src="/images/luggage-sm.jpg">
+    <img src="/images/people.jpg" alt="photo montage">
   </div>
   <div class="login">
-    <input id="email" type="text" placeholder="Your Email" style="background-color: purple;">
+    <input id="email" type="text" placeholder="Your Email">
     <br />
     <input id="password" type="text" placeholder="Password">
     <br />
+    
+<!--    combine button class with ui-sref? if so, change less file   -->
     <button class="l-btn l-btn-success">
-      <a href="profile.html">Login</a>
+      <a ui-sref="profile.html">Login</a>
     </button>
   </div>
 </div>
