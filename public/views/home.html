@@ -1,18 +1,13 @@
-<!--{{ test }}-->
-
 <div class="wrapper">
   <div>
     <img src="/images/people.jpg" alt="photo montage">
   </div>
   
   <div class="login">
-    <input id="name" type="text" placeholder="User Name">
+    <input id="name" type="text" ng-model="user.userName" placeholder="User Name">
     <br />
-    <input id="password" type="text" placeholder="Password">
+    <input id="password" type="text" ng-model="user.password" placeholder="Password">
     <br />
-    
-    <button >
-      <a ui-sref="profile">Login</a>
-    </button>
+    <a ui-sref="profile" ng-click="login(user.userName, user.password)">Login</a>
   </div>
 </div>
