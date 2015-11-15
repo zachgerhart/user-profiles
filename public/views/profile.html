@@ -1,0 +1,26 @@
+<div style='background-color: red;'>
+   <!--   user's info: name, pic, status    -->
+  <div>
+    <ul>
+      <li ng-repeat="profile in profiles">
+        {{ profile.pic }}
+        {{ profile.name }}
+      </li>
+    </ul>
+  </div>  
+  
+  <hr>
+  
+  <!--    other users' info: name, pic, status    -->
+  
+  <div>
+    <ul>
+      <li ng-repeat="profile in profiles">
+        {{ profile.pic }}
+        {{ profile.name }}
+        {{ profile.status }}
+      </li>
+    </ul>
+  </div>
+
+</div>
