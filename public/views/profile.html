@@ -3,9 +3,10 @@
   <div>
     <ul>
 <!--      ??-->
-      <li ng-repeat="profile in profiles">
-        {{ profile.pic }}
-        {{ profile.name }}
+      <li>
+        <img ng-src="{{ currentUser.pic }}">
+        {{ currentUser.name }}
+        {{ currentUser.status }}
       </li>
     </ul>
   </div>  
@@ -19,7 +20,7 @@
       
 <!--      ??-->
       <li ng-repeat="profile in profiles">
-        {{ profile.pic }}
+         <img ng-src="{{ profile.pic }}">
         {{ profile.name }}
         {{ profile.status }}
       </li>

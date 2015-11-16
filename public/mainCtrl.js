@@ -1,9 +1,26 @@
 angular.module('userProfiles')
-.controller('mainCtrl', function( $scope ) {
+.controller('mainCtrl', function( $scope, friendService, $location ) {
 
-	$scope.test = 'test';
+//	$scope.login = function( user ) {
+//    friendService.login(user).then(function( response ) {
+//      if (response.data.userFound) {
+//        $location.path('/profile');
+//      } else {
+//        alert('user not found');
+//      }
+//    });
+//  }
+  
+  $scope.login = function( user ) {
+    $location.path('/profile');
+  }
 
-
+  $scope.currentUser = {
+    name: 'Preston McNeil',
+		pic: 'https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash2/1117694_1614542_108355616_q.jpg',
+		status: 'Everything is bigger in Texas'
+  };
+  
 	$scope.users = [
 		{
 			name: 'Preston McNeil',
@@ -27,6 +44,7 @@ angular.module('userProfiles')
 		}
 	];
 
+  
 	$scope.profiles = [
 		{
 			name: 'Preston McNeil',
