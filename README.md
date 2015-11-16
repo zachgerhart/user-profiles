@@ -141,3 +141,17 @@ app.use(express.static(__dirname + '/public'));
 What we are doing here is utilizing express' built in `static` method to server static files from the directory we pass in. `__dirname` Is built in to node, and is simply the name of the directory our server is being run from. (Try to `console.log(__dirname)` to see exactly what this is).
 
 ### Step 4: Hooking up to the front end.
+Take a few minutes to browse through the current `.js` files in your public folder, you'll notice there are several areas containing `FIX ME`'s. Let's move through and set up our front end so it is actually functional!
+
+To start, you'll notice that our `mainCtrl.js` is calling a function inside of our `friendService.js` that contains a `FIX ME`. This function should post to your `login` endpoint, sending the `user` object we recieved from our controller.
+
+Next we will need to fix the resolve inside of our `app.js`. This resolve should return the result of sending a get request to our `/api/profiles` endpoint.
+
+Lastly you will need to inject that resolve into your `profileCtrl.js` and assign the correct values to `$scope.currentUser` and `$scope.friends`.
+
+___
+Well done! Try logging in as several different users and seeing the different friend lists, all with very minimal front-end code. This was all done simply by tracking our user's session on the back-end.
+
+### Step 5(Black Diamond): Make it a bit more interactive
+- Allow users to add or remove friends.
+- Add a settings view specific to the current user, where they can change their name or password. 
