@@ -9,8 +9,8 @@ angular.module('userProfiles', ['ui.router'])
 		controller: 'mainCtrl'
 	})
 	.state('profile', {
-		url: 'profile',
-		'templateUrl': './views/profile/html',
+		url: '/profile',
+		'templateUrl': './views/profile.html', // changed from profile/html
 		controller: 'mainCtrl'
 	});
 

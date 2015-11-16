@@ -1,0 +1,41 @@
+<div>
+
+  <div class="header">
+    The Most Amazing Social Media Site Ever
+  </div>
+  
+  <div class="logo">
+    <a ui-sref="home">
+      <img src="../images/logo2.png" alt="logo" /> 
+    </a>   
+  </div>
+  
+  <div class="container">    
+    <div class="profile"> 
+      <br />
+      <br />
+      <br />
+      <img ng-src="{{ currentUser.pic }}">
+      <ul>
+        <li class="bolded">{{ currentUser.name }}</li>
+        <li>{{ currentUser.status }}</li>
+      </ul>
+    </div>  
+
+
+    <div class="friends">
+      <ul ng-repeat="profile in profiles">
+        <img ng-src="{{ profile.pic }}">
+        <li class="bolded">{{ profile.name }}</li>
+        <li>{{ profile.status }}</li>
+        <hr>
+      </ul>   
+    </div>
+  </div>
+  
+  <!--
+  <div class="credit">
+    <p>Animal graphic by <a href="http://www.freepik.com/">Freepik</a> from <a href="http://www.flaticon.com/">Flaticon</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a>. Made with <a href="http://logomakr.com" title="Logo Maker">Logo Maker</a></p>
+  </div>  
+  -->
+</div>
