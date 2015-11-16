@@ -1,29 +1,28 @@
 <div>
-   <!--   user's info: name, pic, status    -->
-  <div class="profile"> 
-    <ul>
-      <li>
-        <img ng-src="{{ currentUser.pic }}">
+
+  <div class="header"></div>
+  
+  <div class="container">
+    <div class="profile"> 
+      <br />
+      <br />
+      <br />
+      <img ng-src="{{ currentUser.pic }}">
       <ul>
-        <li>{{ currentUser.name }}</li>
+        <li class="bolded">{{ currentUser.name }}</li>
         <li>{{ currentUser.status }}</li>
-      </ul>        
-      </li>
-    </ul>
-  </div>  
-  
-  <hr>
-  
-  <div class="friends">
-    <ul>
-      <li ng-repeat="profile in profiles">
+      </ul>
+    </div>  
+
+
+    <div class="friends">
+      <ul ng-repeat="profile in profiles">
         <img ng-src="{{ profile.pic }}">
-        <ul>
-          <li>{{ profile.name }}</li>
-          <li>{{ profile.status }}</li>
-        </ul>        
-      </li>
-    </ul>
+        <li class="bolded">{{ profile.name }}</li>
+        <li>{{ profile.status }}</li>
+        <hr>
+      </ul>   
+    </div>
   </div>
 
 </div>
