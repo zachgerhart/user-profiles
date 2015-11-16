@@ -34,7 +34,7 @@ app.get('/example-two', function( req, res ) {
 For our purposes we will be using CORS across all of our routes, so we will use the `app.use` method.
 ___
 
-Next we can setup express-session. Express-session lets us create persistent sessions inside of our app so we can send users information specific to them individually. Before we start using express-session we need to create a `config.js` file and require it in our server. This file should export an object containing a `sessionSecret` property with a value of a string. This session secret is what our app uses to sign the sessions ID cookie. For security reasons **it is important to ensure that this file is added to your `.gitignore`.**
+Next we can setup express-session. Express-session lets us create persistent sessions inside of our app so we can send our users information that is specific to them individually. Before we start using express-session we need to create a `config.js` file and require it in our server. This file should export an object containing a `sessionSecret` property with a value of a string. This session secret is what our app uses to sign the sessions ID cookie. For security reasons **it is important to ensure that this file is added to your `.gitignore`.**
 
 `config.js`:
 ```javascript
@@ -60,7 +60,7 @@ var users = [
 	{
 		name: 'Preston McNeil',
 		password: 'password1',
-		friends: ['Lindsey Mayer', 'Terry Ruff']
+		friends: ['Lindsey Mayer', 'Terri Ruff']
 	},
 	{
 		name: 'Ryan Rasmussen',
@@ -130,3 +130,5 @@ Here we will need a simple method on our exports object that pushes every profil
 ```
 
 This function will need an accompanying endpoint in your `server.js`, so add an `app.get` endpoint with a path of `'/api/profiles'.
+
+### Step 3: Hooking up the front-end.

@@ -10,8 +10,15 @@ angular.module('userProfiles', ['ui.router'])
 	})
 	.state('profile', {
 		url: '/profile',
-		'templateUrl': './views/profile.html', // changed from profile/html
-		controller: 'mainCtrl'
+		'templateUrl': './views/profile.html',
+		controller: 'profileCtrl',
+		resolve: {
+			userInfo: function( $http ) {
+				return $http.get('/api/profiles').then(function( response ) {
+					return response.data;
+				});
+			}
+		}
 	});
 
 	$urlRouterProvider.otherwise('/');

@@ -2,7 +2,7 @@ var users = [
 	{
 		name: 'Preston McNeil',
 		password: 'password1',
-		friends: ['Lindsey Mayer', 'Terry Ruff']
+		friends: ['Lindsey Mayer', 'Terri Ruff']
 	},
 	{
 		name: 'Ryan Rasmussen',
@@ -24,13 +24,17 @@ var users = [
 module.exports = {
 
 	login: function( req, res ) {
+		var userFound = false;
 		users.forEach(function( user ) {
 			if (user.userName === req.body.name && user.password === req.body.password) {
 				req.session.currentUser = user;
-				res.send({ userFound: true });
-				return;
+				userFound = true
 			}
 		});
-		res.send({ userFound: false });
+		if (userFound) {
+			res.send({ userFound: true });
+		} else {
+			res.send({ userFound: false });
+		}
 	}
 }

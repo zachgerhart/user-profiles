@@ -12,22 +12,17 @@
   
   <div class="container">    
     <div class="profile"> 
-      <br />
-      <br />
-      <br />
-      <img ng-src="{{ currentUser.pic }}">
       <ul>
         <li class="bolded">{{ currentUser.name }}</li>
-        <li>{{ currentUser.status }}</li>
       </ul>
     </div>  
 
 
     <div class="friends">
-      <ul ng-repeat="profile in profiles">
-        <img ng-src="{{ profile.pic }}">
-        <li class="bolded">{{ profile.name }}</li>
-        <li>{{ profile.status }}</li>
+      <ul ng-repeat="friend in friends">
+        <img ng-src="{{ friend.pic }}">
+        <li class="bolded">{{ friend.name }}</li>
+        <li>{{ friend.status }}</li>
         <hr>
       </ul>   
     </div>
