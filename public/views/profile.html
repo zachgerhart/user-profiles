@@ -1,28 +1,27 @@
-<div style='background-color: red;'>
+<div>
    <!--   user's info: name, pic, status    -->
-  <div>
+  <div class="profile"> 
     <ul>
-<!--      ??-->
       <li>
         <img ng-src="{{ currentUser.pic }}">
-        {{ currentUser.name }}
-        {{ currentUser.status }}
+      <ul>
+        <li>{{ currentUser.name }}</li>
+        <li>{{ currentUser.status }}</li>
+      </ul>        
       </li>
     </ul>
   </div>  
   
   <hr>
   
-  <!--    other users' info: name, pic, status    -->
-  
-  <div>
+  <div class="friends">
     <ul>
-      
-<!--      ??-->
       <li ng-repeat="profile in profiles">
-         <img ng-src="{{ profile.pic }}">
-        {{ profile.name }}
-        {{ profile.status }}
+        <img ng-src="{{ profile.pic }}">
+        <ul>
+          <li>{{ profile.name }}</li>
+          <li>{{ profile.status }}</li>
+        </ul>        
       </li>
     </ul>
   </div>
