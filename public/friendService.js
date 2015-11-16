@@ -3,7 +3,7 @@ angular.module('userProfiles')
   return {
     
     login: function( user ) {
-      return $http.post('/api/login', user);
+      /* FIX ME */
     }
   }
 });
