@@ -13,10 +13,8 @@ angular.module('userProfiles', ['ui.router'])
 		'templateUrl': './views/profile.html',
 		controller: 'profileCtrl',
 		resolve: {
-			userInfo: function( $http ) {
-				return $http.get('/api/profiles').then(function( response ) {
-					return response.data;
-				});
+			userInfo: function( friendService ) {
+				return friendService.getFriends();
 			}
 		}
 	});

@@ -25,4 +25,4 @@ app.get('/api/profiles', profileCtrl.getFriends);
 
 app.listen(port, function() {
 	console.log('listening on ' + port)
-})
+});

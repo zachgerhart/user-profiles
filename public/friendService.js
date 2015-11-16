@@ -4,6 +4,12 @@ angular.module('userProfiles')
     
     login: function( user ) {
       return $http.post('/api/login', user);
+    },
+
+    getFriends() {
+    	return $http.get('/api/profiles').then(function( response ) {
+    		return response.data;
+    	});
     }
   }
 });

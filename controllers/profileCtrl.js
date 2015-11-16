@@ -25,7 +25,6 @@ module.exports = {
 
 	getFriends: function( req, res ) {
 		var friendsArray = [];
-		console.log(req.session.currentUser.friends)
 		req.session.currentUser.friends.forEach(function( friend ) {
 			profiles.forEach(function( profile ) {
 				if (friend === profile.name) {
