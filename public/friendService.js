@@ -4,6 +4,10 @@ angular.module('userProfiles')
     
     login: function( user ) {
       /* FIX ME */
+    },
+
+    getFriends: function() {
+    	/* FIX ME */
     }
   }
 });
