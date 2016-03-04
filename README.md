@@ -49,7 +49,7 @@ For our purposes we will be using CORS across all of our routes, so we will use 
 Next we can setup express-session. Express-session lets us create persistent sessions inside of our app so we can send our users information that is specific to
 them individually. Before we start using express-session we need to create a `config.js` file and require it in our server. This file should export an object
 containing a `sessionSecret` property with a value of a random string. This session secret is what our app uses to sign the sessions ID cookie. For security
-reasons **it is important to ensure that this file is added to your `.gitignore`.** `echo "config.js >> .gitignore"` or look into Git filters.
+reasons **it is important to ensure that this file is added to your `.gitignore`.** `echo 'config.js' >> .gitignore` or look into Git filters.
 
 `config.js`:
 ```javascript
