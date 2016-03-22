@@ -192,3 +192,11 @@ tracking our user's session on the back-end.
 * Allow users to add or remove friends.
 * Add a settings view specific to the current user, where they can change their name or password.
 
+
+## Contributions
+
+Please refer to CONTRIBUTING.md.
+
+## Copyright
+
+© DevMountain LLC, 2015. Unauthorized use and/or duplication of this material without express and written permission from DevMountain, LLC is strictly prohibited. Excerpts and links may be used, provided that full and clear credit is given to DevMountain with appropriate and specific direction to the original content.
