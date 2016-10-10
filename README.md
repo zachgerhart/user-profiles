@@ -2,7 +2,7 @@
 
 Today we will be creating a user profiles page that tracks the current user on the back-end and displays information specific to that user. This app will serve
 all of our front end files, preventing the need for `live-server` or `http-server`. By the end of the project you will be comfortable using express sessions,
-hiding application secrets, and how to serve static files from the back-end.
+hiding application secrets, and serving static files from the back-end.
 
 ## Step 1: Basic setup
 
@@ -49,7 +49,7 @@ For our purposes we will be using CORS across all of our routes, so we will use 
 Next we can setup express-session. Express-session lets us create persistent sessions inside of our app so we can send our users information that is specific to
 them individually. Before we start using express-session we need to create a `config.js` file and require it in our server. This file should export an object
 containing a `sessionSecret` property with a value of a random string. This session secret is what our app uses to sign the sessions ID cookie. For security
-reasons **it is important to ensure that this file is added to your `.gitignore`.** `echo 'config.js' >> .gitignore` or look into Git filters.
+reasons **it is important to ensure that this file is added to your `.gitignore`.** You can do this in one line from the terminal using`echo 'config.js' >> .gitignore`, or look into Git filters.
 
 `config.js`:
 ```javascript
@@ -125,10 +125,10 @@ var profiles = [
 ];
 ```
 
-We'll start in `userCtrl.js`.
+We'll start in `userCtrl.js`. First create your module.exports object. The data from above will live outside of this object.
 
 * Create a method on our exports object named `login`, this method should loop through the users array, find the user that matches `req.body.name` and confirm
-  that the `req.body.password` matches the user's password.
+  that the `req.body.password` matches the user's password. (If you use .filter instead, be aware that it will always return an array, so you'll need to grab what is in index 0.)
 * If we find a match we need to set `req.session.currentUser` equal to to the correct user object and `res.send({ userFound: true });`.
 * If we don't find the user, we will need to `res.send({ userFound: false });`.
 * This function will need an endpoint, let's create a 'POST' endpoint on the path `'/api/login'` and have it call our newly created login method.
@@ -140,9 +140,9 @@ Things to note:
 * We have set a property on the `req.session` equal to our user. This lets us continue to track which user is currently active.
 
 ___
-On to `profileCtrl.js`
+On to `profileCtrl.js`. Again, create your module.exports object.
 
-Here we will need a simple method on our exports object that pushes every profile that is in the `req.session.currentUser`'s `friends` array. Then `res.send`'s
+Here we will need a simple method on our exports object that pushes every profile that is in the current user's (now stored as `req.session.currentUser`) `friends` array. (Hint: You'll need to loop over the currentUser's friends and also loop over (or filter) the profiles array.) Then `res.send`'s
 an object back containing our new array and the current user. The response object should be structured something like this:
 
 ```javascript
@@ -166,7 +166,7 @@ line to our `server.js`.
 app.use(express.static(__dirname + '/public'));
 ```
 
-What we are doing here is utilizing express's built in `static` method to serve static files from the directory we pass in. `__dirname` Is a node built-in, and
+What we are doing here is utilizing express's built in `static` method to serve static files from the directory we pass in. `__dirname` is a node built-in, and
 is simply the name of the directory our server is being run from. (Try to `console.log(__dirname)` to see exactly what this is).
 
 ## Step 4: Hooking up to the front end.
@@ -174,11 +174,11 @@ is simply the name of the directory our server is being run from. (Try to `conso
 Take a few minutes to browse through the current `.js` files in your public folder, you'll notice there are several areas containing `FIX ME`'s. Let's move
 through and set up our front end so it is actually functional!
 
-To start, you'll notice that our `mainCtrl.js` is calling a function inside of our `friendService.js` that contains a `FIX ME`. This function should post to
-your `login` endpoint, sending the `user` object we recieved from our controller.
+To start, you'll notice that our `mainCtrl.js` is calling the `login` function inside of our `friendService.js` that contains a `FIX ME`. This function should post to
+your `login` endpoint, sending the `user` object we received from our controller.
 
-Next we will need to fix the resolve inside of our `app.js`. This resolve should return the result of our `friendService.getFriends` method sending a 'GET'
-request to our `/api/profiles` endpoint.
+Next, we need to write the `getFriends` method in `friendService.js` so that it sends a `GET`
+request to our `/api/profiles` endpoint. Then we will need to fix the resolve inside of our `app.js`, which should return the result of our `friendService.getFriends` method.
 
 Lastly you will need to inject that resolve into your `profileCtrl.js` and assign the correct values to `$scope.currentUser` and `$scope.friends`.
 
