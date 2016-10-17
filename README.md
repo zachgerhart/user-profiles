@@ -142,7 +142,7 @@ Things to note:
 ___
 On to `profileCtrl.js`. Again, create your module.exports object.
 
-Here we will need a simple method on our exports object that pushes every profile that is in the current user's (now stored as `req.session.currentUser`) `friends` array. (Hint: You'll need to loop over the currentUser's friends and also loop over (or filter) the profiles array.) Then `res.send`'s
+Here we will need a simple method on our exports object that pushes every profile that is in the current user's (now stored as `req.session.currentUser`) `friends` array. (Hint: You'll need to loop over the currentUser's friends and also loop over (or filter) the profiles array.) Then `res.send`
 an object back containing our new array and the current user. The response object should be structured something like this:
 
 ```javascript
@@ -178,9 +178,9 @@ To start, you'll notice that our `mainCtrl.js` is calling the `login` function i
 your `login` endpoint, sending the `user` object we received from our controller.
 
 Next, we need to write the `getFriends` method in `friendService.js` so that it sends a `GET`
-request to our `/api/profiles` endpoint. Then we will need to fix the resolve inside of our `app.js`, which should return the result of our `friendService.getFriends` method.
+request to our `/api/profiles` endpoint. 
 
-Lastly you will need to inject that resolve into your `profileCtrl.js` and assign the correct values to `$scope.currentUser` and `$scope.friends`.
+Lastly, in `profileCtrl.js` you will need to assign the correct values (coming from the `getFriends` method in your service) to `$scope.currentUser` and `$scope.friends`.
 
 --------
 

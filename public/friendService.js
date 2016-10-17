@@ -1,13 +1,13 @@
 angular.module('userProfiles')
-.factory('friendService', function( $http ) {
-  return {
+.service('friendService', function( $http ) {
+  
     
-    login: function( user ) {
+    this.login: function( user ) {
       /* FIX ME */
     },
 
-    getFriends: function() {
+    this.getFriends: function() {
     	/* FIX ME */
     }
-  }
+  
 });
