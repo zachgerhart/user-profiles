@@ -142,7 +142,7 @@ Things to note:
 ___
 On to `profileCtrl.js`. Again, create your module.exports object.
 
-Here we will need a simple method on our exports object that pushes every profile that is in the current user's (now stored as `req.session.currentUser`) `friends` array. (Hint: You'll need to loop over the currentUser's friends and also loop over (or filter) the profiles array.) Then `res.send`'s
+Here we will need a simple method on our exports object that pushes every profile that is in the current user's (now stored as `req.session.currentUser`) `friends` array. (Hint: You'll need to loop over the currentUser's friends and also loop over (or filter) the profiles array.) Then `res.send`
 an object back containing our new array and the current user. The response object should be structured something like this:
 
 ```javascript
