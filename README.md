@@ -104,22 +104,22 @@ var users = [
 var profiles = [
   {
     name: 'Preston McNeil',
-    pic: 'https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash2/1117694_1614542_108355616_q.jpg',
+    pic: 'https://s3.amazonaws.com/uifaces/faces/twitter/ashleyford/128.jpg',
     status: 'Everything is bigger in Texas'
   },
   {
     name: 'Ryan Rasmussen',
-    pic: 'https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash4/211536_7938705_80713399_q.jpg',
+    pic: 'https://s3.amazonaws.com/uifaces/faces/twitter/jadlimcaco/128.jpg',
     status: 'RR Rules'
   },
   {
     name: 'Terri Ruff',
-    pic: 'https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash3/41368_8222994_4799_q.jpg',
+    pic: 'https://s3.amazonaws.com/uifaces/faces/twitter/adellecharles/128.jpg',
     status: 'Wow, I typed out hunter2 and all you saw was ******?!?!??'
   },
   {
     name: 'Lindsey Mayer',
-    pic: 'https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash3/173210_10024969_2137324550_q.jpg',
+    pic: 'https://s3.amazonaws.com/uifaces/faces/twitter/nzcode/128.jpg',
     status: 'OMG MITTENS DID THE CUTEST THING TODAY'
   }
 ];
@@ -178,7 +178,7 @@ To start, you'll notice that our `mainCtrl.js` is calling the `login` function i
 your `login` endpoint, sending the `user` object we received from our controller.
 
 Next, we need to write the `getFriends` method in `friendService.js` so that it sends a `GET`
-request to our `/api/profiles` endpoint. 
+request to our `/api/profiles` endpoint.
 
 Lastly, in `profileCtrl.js` you will need to assign the correct values (coming from the `getFriends` method in your service) to `$scope.currentUser` and `$scope.friends`.
 
@@ -196,3 +196,4 @@ tracking our user's session on the back-end.
 ## Copyright
 
 © DevMountain LLC, 2015. Unauthorized use and/or duplication of this material without express and written permission from DevMountain, LLC is strictly prohibited. Excerpts and links may be used, provided that full and clear credit is given to DevMountain with appropriate and specific direction to the original content.
+git
