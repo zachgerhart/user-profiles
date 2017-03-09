@@ -17,7 +17,7 @@ Require your dependencies and initialize express. Run the `app.use` method on `b
 
 --------
 
-Once everything is working we can set up the our the first of our new dependencies: CORS. The most simple usage of CORS is to simply `app.use(cors())`. This
+Once everything is working we can set up the our the first of our new dependencies: CORS. The simplest usage of CORS is to `app.use(cors())`. This
 will allow cross-origin requests from any domain, across all of your endpoints. This would accomplish roughly the same thing as our custom `addHeaders`
 middleware from yesterday. The primary drawback to this method is the insecurity; any domain can freely make requests to our server. So we will be configuring
 CORS to whitelist only a specific origin.
@@ -142,8 +142,11 @@ Things to note:
 ___
 On to `profileCtrl.js`. Again, create your module.exports object.
 
-Here we will need a simple method on our exports object that pushes every profile that is in the current user's (now stored as `req.session.currentUser`) `friends` array. (Hint: You'll need to loop over the currentUser's friends and also loop over (or filter) the profiles array.) Then `res.send`
-an object back containing our new array and the current user. The response object should be structured something like this:
+Let's create a method called `getFriendsProfiles`. Your current user has a friends array which contains a list of names. For each friend in this array, you will need to find the corresponding profile object in the profiles array. Push these matching profile objects to a new array.  
+
+(Hint: You'll need to loop over the currentUser's friends, and for each friend, you will need to loop over the profiles array.) 
+
+Then `res.send` an object back containing our new array and the current user. The response object should be structured something like this:
 
 ```javascript
 {
